@@ -1,4 +1,4 @@
-#C - Sorting algorithms & Big O
+# C - Sorting algorithms & Big O
 
 
 ## Bubble sort
