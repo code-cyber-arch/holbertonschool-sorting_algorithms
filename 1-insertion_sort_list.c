@@ -12,8 +12,8 @@ void swap(listint_t *node1, listint_t *node2)
 {
 	int temp = node1->n;
 
-	node1->n = node2->n;
-	node2->n = temp;
+	*((int *)&node1->n) = node2->n;
+	*((int *)&node2->n) = temp;
 }
 
 /**
