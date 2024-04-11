@@ -20,14 +20,14 @@ void insertion_sort_list(listint_t **list)
 
 	while (current != NULL)
 	{
+		listint_t *sortedPrev = NULL;
+		listint_t *sortedCurrent = NULL;
+
 		nextNode = current->next;
 		if (current->prev)
 			current->prev->next = current->next;
 		if (current->next)
 			current->next->prev = current->prev;
-
-		listint_t *sortedPrev = NULL;
-		listint_t *sortedCurrent = sorted;
 
 		while (sortedCurrent != NULL && current->n > sortedCurrent->n)
 		{
