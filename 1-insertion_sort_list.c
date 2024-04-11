@@ -17,18 +17,18 @@ void insertion_sort_list(listint_t **list)
 	listint_t *sorted = NULL;
 	listint_t *current = *list;
 	listint_t *nextNode = NULL;
+	listint_t *sortedPrev;
+	listint_t *sortedCurrent;
 
 	while (current != NULL)
 	{
-		listint_t *sortedPrev = NULL;
-		listint_t *sortedCurrent = NULL;
-
+		sortedPrev = NULL;
+		sortedCurrent = NULL;
 		nextNode = current->next;
 		if (current->prev)
 			current->prev->next = current->next;
 		if (current->next)
 			current->next->prev = current->prev;
-
 		while (sortedCurrent != NULL && current->n > sortedCurrent->n)
 		{
 			sortedPrev = sortedCurrent;
