@@ -1,55 +1,37 @@
 #include "sort.h"
 
 /**
- * swap - Swaps the integer values of two list nodes
- * @node1: Pointer to the first node
- * @node2: Pointer to the second node
+ * insertion_sort_list - Sorts a doubly linked list using insertion sort.
+ * @list: Double pointer to the head of the list.
  *
- * Description: This function swaps the integer values of two list nodes.
- */
-
-void swap(listint_t *node1, listint_t *node2)
-{
-	int temp = node1->n;
-
-	*((int *)&node1->n) = node2->n;
-	*((int *)&node2->n) = temp;
-}
-
-/**
- * insertion_sort_list - Sorts a doubly linked list using the
- * Insertion Sort algorithm
- * @list: Pointer to the head of the doubly linked list
- *
- * Description: Iteratively rearranges the list by inserting each
- * element into its correct position in the sorted part of the list.
+ * Description: Sorts integers in ascending order by moving each element
+ * to its correct position, maintaining the doubly linked list structure.
  */
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current, *temp;
+	listint_t *key;
 
-	if (!list || !*list || !(*list)->next)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
-	for (current = (*list)->next; current; current = temp)
+	key = (*list)->next;
+	while (key != NULL)
 	{
-		temp = current->next;
-		while (current->prev && current->prev->n > current->n)
+		while (key->prev != NULL && key->n < key->prev->n)
 		{
-			if (!current->next)
-				*list = current;
+			key->prev->next = key->next;
+			if (key->next != NULL)
+				key->next->prev = key->prev;
+			key->next = key->prev;
+			key->prev = key->prev->prev;
+			key->next->prev = key;
+			if (key->prev == NULL)
+				*list = key;
 			else
-			{
-				current->prev->next = current->next;
-				current->next->prev = current->prev;
-			}
-			current->next = current->prev;
-			current->prev = current->next->prev;
-			current->next->prev = current;
-
-			if (current->prev)
-				current->prev->next = current;
+				key->prev->next = key;
+			print_list(*list);
 		}
+		key = key->next;
 	}
 }
