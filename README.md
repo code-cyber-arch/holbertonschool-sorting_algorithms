@@ -47,8 +47,19 @@ gcc -Wall -Wextra -Werror -pedantic 1-main.c 1-insertion_sort_list.c print_list.
 ```
 ## 2 - Selection sort
 Selection sort is a simple sorting algorithm that segments the list into a sorted and an unsorted part. It repeatedly identifies the smallest (or largest) element in the unsorted section and swaps it to the end of the sorted section. This process is repeated until the entire list is sorted. Despite its straightforward nature, selection sort is inefficient for large lists with a time complexity of O(n2), making it less suitable compared to faster algorithms like quicksort or mergesort.
+###
 
-
+The provided C program,[2-selection\_sort.c](https://github.com/amirasabdu/holbertonschool-sorting_algorithms/blob/main/2-selection_sort.c) implements the selection sort algorithm to sort an array of integers in ascending order. Here's a concise explanation of its functionality:
+- Function: selection\_sort
+	- Purpose: Sorts an array by repeatedly finding the minimum element from the unsorted part and swapping it with the first unsorted element.
+	- Parameters: Accepts an array of integers (array) and the number of elements in the array (size).
+- Key Details:
+	- Validation Check: Ensures that the array is not NULL before proceeding with the sorting process.
+	- Sorting Process: Iterates over the array, selecting the smallest element in the unsorted part and swapping it with the element at the current position.
+	- Swap Operation: Uses a temporary variable (swap) to swap elements in the array.
+	- Printing Array: After each swap, the function checks if any swaps were made in the inner loop (flag != 0) and prints the array to visualize the sorting process.
+###
+The selection sort algorithm divides the array into sorted and unsorted parts, repeatedly selecting the smallest element from the unsorted part and moving it to the sorted part. Although simple, selection sort has a time complexity of O(n2), making it inefficient for large datasets compared to more advanced algorithms.
 ###
 Compile with this line of code, ensuring that the supporting files are included in the [build](https://github.com/amirasabdu/holbertonschool-sorting_algorithms/tree/main/build_file)
 ```sh
@@ -56,6 +67,23 @@ gcc -Wall -Wextra -Werror -pedantic 2-main.c 2-selection_sort.c print_array.c -o
 ```
 ## 3 - Quick sort
 
+Quick sort is a fast sorting algorithm that divides an array into smaller subarrays, sorts them independently, and then combines them. Here's how it works:
+
+- Choose Pivot: Select a pivot element from the array.
+- Partitioning: Rearrange the array so that all elements less than the pivot are on the left, and all elements greater than the pivot are on the right.
+- Recursion: Recursively apply the above steps to the subarrays on the left and right of the pivot.
+- Base Case: The recursion stops when the subarray size is 1 or 0.
+###
+Quick sort has an average-case time complexity of O(nlogn) and is efficient in practice, making it a popular choice for sorting.
+###
+This C program, [3-quick\_sort.c](https://github.com/amirasabdu/holbertonschool-sorting_algorithms/blob/main/3-quick_sort.c) implements the quicksort algorithm to sort an array of integers in ascending order. Here's a brief overview:
+- swap function: Swaps two elements in an array and prints the modified array. Used by the partition function.
+- partition function: Rearranges elements around a pivot element for quicksort. Elements less than the pivot are moved to the left, and greater elements to the right. Returns the new pivot index. Uses the swap function for rearrangement.
+- quick\_recursion function: Recursively sorts an array using quicksort. Partitions the array around a pivot and sorts the subarrays on either side of the pivot.
+- quick\_sort function: Initiates the quicksort algorithm by calling quick\_recursion with the initial left and right indices of the array.
+###
+The quicksort algorithm divides the array into two subarrays and recursively sorts them. It has an average time complexity of 
+O(nlogn), making it more efficient than other simple sorting algorithms like bubble sort and selection sort.
 ###
 Compile with this line of code, ensuring that the supporting files are included in the [build](https://github.com/amirasabdu/holbertonschool-sorting_algorithms/tree/main/build_file)
 ```sh
